@@ -19,9 +19,8 @@ import Link from "next/link";
 
 export function AppSidebar() {
   return (
-    <Sidebar className="border-r bg-white shadow-lg">
+    <Sidebar className="border-r shadow-lg">
 
-      {/* Header */}
       <SidebarHeader className="p-4 border-b">
         <h1 className="text-xl font-bold text-indigo-600 tracking-wide">
           Admin Panel
@@ -77,9 +76,8 @@ export function AppSidebar() {
 
       </SidebarContent>
 
-      {/* Footer */}
       <SidebarFooter className="p-4 border-t text-xs text-gray-400">
-        © 2026 Admin Dashboard
+        &copy; 2026 Admin Dashboard
       </SidebarFooter>
 
     </Sidebar>

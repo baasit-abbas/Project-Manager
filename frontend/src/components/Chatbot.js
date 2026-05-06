@@ -23,9 +23,11 @@ const Chatbot = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const chat = { user: question, bot: null };
+    const que = question
+    setquestion('')
     setUserandBot((prev) => [chat, ...prev]);
     const data = await API.post("http://127.0.0.1:5000/ask", {
-      query: question,
+      query: que,
       task_info: task_info,
     });
     const answer = data.res;
@@ -98,7 +100,7 @@ const Chatbot = () => {
       ) : (
         <button
           onClick={() => setshowAI(true)}
-          className="fixed top-4 right-4 bg-linear-to-r from-indigo-500 to-purple-500 p-3 rounded-full shadow-lg hover:scale-110 transition duration-300 cursor-pointer"
+          className="fixed top-2 right-4 bg-linear-to-r from-indigo-500 to-purple-500 p-3 rounded-full shadow-lg hover:scale-110 transition duration-300 cursor-pointer z-50"
         >
           <FaRobot className="text-white" size={22} />
         </button>

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { API } from "../lib/AuthClient";
 import { useRouter } from "next/navigation";
-import { getUser, IsLoggedIn, login } from "../lib/AuthService";
+import { getUser, login } from "../lib/AuthService";
 import ShowPassword from "@/components/ShowPassword";
 
 export default function RegisterPage() {
@@ -36,7 +36,7 @@ export default function RegisterPage() {
       toast.error("Passwords Do not Match");
       return;
     }
-    if (password.length <= 3) {
+    if (password.length < 3) {
       toast.error("Password Must contain atleast three chracters");
       return
     }
@@ -59,7 +59,7 @@ export default function RegisterPage() {
         </h2>
 
         <p className="text-center text-gray-500 mb-6">
-          Join us and start managing tasks 🚀
+          Join us and start managing tasks 
         </p>
 
         <form onSubmit={handleSubmit}>

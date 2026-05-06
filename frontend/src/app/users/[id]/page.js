@@ -29,7 +29,6 @@ export default function UserDashboard({ params }) {
 
       setUser(user);
       const data = await API.get(`http://localhost:3000/user/${id}`);
-      
       const tasks = data.tasks.map(item => item.task)
       setTasks(tasks);
     };

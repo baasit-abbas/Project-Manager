@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { getUser, IsLoggedIn } from "./lib/AuthService";
+import { getUser } from "./lib/AuthService";
 import { useRouter } from "next/navigation";
 
 
@@ -9,10 +9,10 @@ export default function AdminPage() {
 
   useEffect(() => {
     const loadData = async () => {
-      if (!IsLoggedIn()) {
+      const user = getUser();
+      if (!user) {
         router.push("/login");
       }
-      const user = getUser();
       if (user.role === "user") {
         router.push(`/users/${user.id}`);
       }

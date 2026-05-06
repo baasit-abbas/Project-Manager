@@ -23,7 +23,7 @@ const UserTaskCard = (props) => {
 
   const handleDelete = async () => {
     const user = await API.delete(`http://localhost:3000/user/${props.id}`)
-    const newUsers = props.users.filter(item => item.user.id == props.id)
+    const newUsers = props.users.filter(item => item.id !== props.id)
     props.setusers(newUsers)
     toast.success('User Deleted Successfully')
   }

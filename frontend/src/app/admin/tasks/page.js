@@ -18,7 +18,7 @@ export default function TasksPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-100 via-gray-200 to-gray-100 p-6">
+    <div className="min-h-screen bg-linear-to-br from-gray-100 via-gray-200 to-gray-100 p-6 relative z-10">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
           <div>

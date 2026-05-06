@@ -16,7 +16,6 @@ const UserCard = (props) => {
   const handleStatus = async (name) => {
     setstatus(name)
     const data = await API.patch(`http://localhost:3000/tasks/${props.id}`,{'status':name})
-    console.log(data)
   }
 
   return (

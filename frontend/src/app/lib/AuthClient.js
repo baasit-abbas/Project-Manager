@@ -12,12 +12,13 @@ export class API{
             },
             body:JSON.stringify(data)
         })
-
         if (!res.ok){
             return []
         }
-
-        return res.json()
+        if (res){
+            return res.json()
+        }
+        return null
     }
 
     static async get(url){

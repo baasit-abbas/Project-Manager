@@ -30,7 +30,7 @@ export default function UserTasksPage({ params }) {
     <div className="min-h-screen bg-linear-to-br from-gray-100 to-gray-200 p-6">
       <div className="max-w-5xl mx-auto">
         <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-200 mb-6">
-          <h1 className="text-3xl font-bold text-gray-800">{usernname} 👤</h1>
+          <h1 className="text-3xl font-bold text-gray-800">{usernname}</h1>
 
           <p className="text-gray-500 mt-2">{email}</p>
         </div>

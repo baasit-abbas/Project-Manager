@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getUser, IsLoggedIn, login } from "../lib/AuthService";
+import { getUser, login } from "../lib/AuthService";
 import { useRouter } from "next/navigation";
 import ShowPassword from "@/components/ShowPassword";
-import { toast } from "react-toastify";
 
 export default function LoginPage() {
   const [email, setemail] = useState("");

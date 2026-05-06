@@ -11,12 +11,17 @@ export default function AdminPage() {
   const router = useRouter();
   const [projects, setprojects] = useState([]);
   const [user, setuser] = useState("");
+  
 
   useEffect(() => {
     const loadData = async () => {
       const user = getUser();
       setuser(user);
       const projects = await API.get("http://localhost:3000/projects");
+      if (projects.message){
+        setprojects([])
+        return
+      }
       setprojects(projects);
     };
 
@@ -25,7 +30,6 @@ export default function AdminPage() {
 
   const handleAdd = async (data) => {
     const new_project = await API.post("http://localhost:3000/projects", data);
-    console.log(new_project);
     setprojects((prev) => [...prev, new_project]);
   };
 
@@ -73,7 +77,6 @@ export default function AdminPage() {
           </div>
         )}
       </div>
-      
     </div>
   );
 }

@@ -3,11 +3,6 @@ import { API } from "./AuthClient"
 import { toast } from "react-toastify"
 
 
-export function IsLoggedIn(){
-    if (typeof window === "undefined") return false;
-    return !!localStorage.getItem('token')
-}
-
 export function getToken(){
     return localStorage.getItem('token')
 }
@@ -25,11 +20,11 @@ export function logOut(router){
 
 export async function login(data,router){
     const res = await API.post('http://localhost:3000/auth/login',data)
-    if (res.message){
+    const token = res.access_token
+    if (!token){
         toast.error('Wrong Email or Password')
         return
     }
-    const token = res.access_token
     localStorage.setItem('token',token)
     const user = jwtDecode(token)
     localStorage.setItem('user',JSON.stringify(user))
