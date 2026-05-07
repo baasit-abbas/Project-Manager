@@ -30,7 +30,7 @@ export default function TaskUsersPage({ params }) {
 
         <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-200">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">
-            Assigned Users 👥
+            Assigned Users 
           </h2>
 
           {users.length === 0 ? (

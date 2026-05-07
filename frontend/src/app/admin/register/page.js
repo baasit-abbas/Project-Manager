@@ -1,11 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { toast } from "react-toastify";
-import { API } from "../lib/AuthClient";
-import { useRouter } from "next/navigation";
-import { getUser, login } from "../lib/AuthService";
+import { API } from "@/app/lib/AuthClient";
 import ShowPassword from "@/components/ShowPassword";
 
 export default function RegisterPage() {
@@ -15,20 +12,6 @@ export default function RegisterPage() {
   const [Confirm, setConfirm] = useState("");
   const [showPass, setshowPass] = useState(false);
   const [showCon, setshowCon] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    const user = getUser()
-    if (user){
-        if (user.role === 'user'){
-            router.push(`user/${user.id}`)
-        }
-        else{
-            router.push('/')
-        }
-    } 
-  }, [])
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,19 +30,22 @@ export default function RegisterPage() {
     };
 
     await API.post("http://localhost:3000/auth/register",data);
-    const loginData = { email, password };
-    login(loginData,router);
+    setusername('')
+    setemail('')
+    setpassword('')
+    setConfirm('')
+    toast.success('User added Successfully')
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-500 via-purple-500 to-pink-500 p-4">
+    <div className="min-h-screen flex items-center justify-center b p-4">
       <div className="w-full max-w-md bg-white/90 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-white/30">
         <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-2">
-          Create Account
+          Create User
         </h2>
 
         <p className="text-center text-gray-500 mb-6">
-          Join us and start managing tasks 
+          Create another user 
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -117,18 +103,9 @@ export default function RegisterPage() {
             type="submit"
             className="w-full bg-linear-to-r from-purple-500 to-pink-500 text-white font-semibold py-2 rounded-lg hover:scale-[1.02] transition duration-200 shadow-lg cursor-pointer"
           >
-            Create Account
+            Create User
           </button>
         </form>
-        <p className="text-center text-sm text-gray-600 mt-4">
-          Already have an account?{" "}
-          <Link
-            href={"/login"}
-            className="text-purple-600 cursor-pointer hover:underline"
-          >
-            Login
-          </Link>
-        </p>
       </div>
     </div>
   );

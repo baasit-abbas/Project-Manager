@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getUser, login } from "../lib/AuthService";
 import { useRouter } from "next/navigation";
@@ -15,7 +14,7 @@ export default function LoginPage() {
     const user = getUser();
     if (user) {
       if (user.role === "user") {
-        router.push(`user/${user.id}`);
+        router.push(`users/${user.id}`);
       } else {
         router.push("/");
       }
@@ -94,16 +93,6 @@ export default function LoginPage() {
             </span>
           </button>
         </form>
-
-        <p className="mt-5 text-center text-sm text-slate-500">
-          Don&apos;t have an account?{" "}
-          <Link
-            href={"/register"}
-            className="font-medium text-sky-600 transition hover:text-sky-700 hover:underline cursor-pointer"
-          >
-            Sign up
-          </Link>
-        </p>
       </div>
     </div>
   );

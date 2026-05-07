@@ -56,7 +56,6 @@ export default function AdminPage() {
 
         {projects.length === 0 ? (
           <div className="border-2 border-dashed border-gray-300 rounded-2xl p-10 flex flex-col items-center justify-center bg-white/70 backdrop-blur mb-8">
-            <div className="text-6xl mb-4">📂</div>
             <h2 className="text-xl font-semibold text-gray-700">
               No Projects Found
             </h2>

@@ -2,6 +2,10 @@ import { jwtDecode } from "jwt-decode"
 import { API } from "./AuthClient"
 import { toast } from "react-toastify"
 
+export function IsLoggedIn(){
+    if (typeof window === "undefined") return false;
+    return !!localStorage.getItem('token')
+}
 
 export function getToken(){
     return localStorage.getItem('token')
@@ -29,7 +33,7 @@ export async function login(data,router){
     const user = jwtDecode(token)
     localStorage.setItem('user',JSON.stringify(user))
     if (user.role === 'user'){
-        router.push(`users/${user.id}`)
+        router.push(`/users/${user.id}`)
     }
     else{
         router.push('/')
@@ -38,6 +42,6 @@ export async function login(data,router){
 
 export function formatDate(date) {
     const formatDate = new Date(date)
-  return formatDate.toISOString().split("T")[0];
+    return formatDate.toISOString().split("T")[0];
 }
 

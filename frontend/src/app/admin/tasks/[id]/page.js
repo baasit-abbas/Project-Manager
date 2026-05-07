@@ -1,9 +1,7 @@
 "use client";
 
 import { API } from "@/app/lib/AuthClient";
-import { getUser, IsLoggedIn } from "@/app/lib/AuthService";
 import AdminCard from "@/components/AdminCard";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function UserTasksPage({ params }) {

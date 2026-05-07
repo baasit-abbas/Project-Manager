@@ -20,6 +20,5 @@ export class PatchProjectDto{
 
     @IsOptional()
     @IsString()
-    deadline!:Date
-    
+    deadline!:Date   
 }

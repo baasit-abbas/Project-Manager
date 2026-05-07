@@ -20,12 +20,11 @@ const EditProject = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const data = {title,description,priority,status,deadline}
+        const last_Date = new Date(deadline)
+        const data = {title,description,priority,status, deadline:last_Date}
         props.edit(data)    
         setopen(false)
     }
-
-    
 
   return (
     <Dialog open={open} onOpenChange={setopen}>

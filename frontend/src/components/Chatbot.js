@@ -10,25 +10,17 @@ const Chatbot = () => {
   const [showAI, setshowAI] = useState(false);
   const [UserandBot, setUserandBot] = useState([]);
   const [question, setquestion] = useState("");
-  const [task_info, settask_info] = useState([]);
-
-  useEffect(() => {
-    const loadData = async () => {
-      const data = await API.get("http://localhost:3000/tasks");
-      settask_info(data);
-    };
-    loadData();
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const tasks = await API.get("http://localhost:3000/tasks");
     const chat = { user: question, bot: null };
-    const que = question
-    setquestion('')
+    const que = question;
+    setquestion("");
     setUserandBot((prev) => [chat, ...prev]);
     const data = await API.post("http://127.0.0.1:5000/ask", {
       query: que,
-      task_info: task_info,
+      task_info: tasks,
     });
     const answer = data.res;
     setUserandBot((prev) => {
@@ -66,7 +58,32 @@ const Chatbot = () => {
 
                 <div className="bg-gray-700 text-gray-200 rounded-xl p-3 max-w-[80%] text-sm shadow">
                   {item.bot ? (
-                    <ReactMarkdown>{item.bot}</ReactMarkdown>
+                    <div className="prose prose-invert max-w-none">
+                      <ReactMarkdown
+                        components={{
+                          h1: ({ node, ...props }) => (
+                            <h1 className="text-xl font-bold mb-2" {...props} />
+                          ),
+                          h2: ({ node, ...props }) => (
+                            <h2
+                              className="text-lg font-semibold mb-2"
+                              {...props}
+                            />
+                          ),
+                          p: ({ node, ...props }) => (
+                            <p className="mb-2 leading-relaxed" {...props} />
+                          ),
+                          ul: ({ node, ...props }) => (
+                            <ul className="list-disc ml-5 mb-2" {...props} />
+                          ),
+                          li: ({ node, ...props }) => (
+                            <li className="mb-1" {...props} />
+                          ),
+                        }}
+                      >
+                        {item.bot}
+                      </ReactMarkdown>
+                    </div>
                   ) : (
                     <Loader />
                   )}

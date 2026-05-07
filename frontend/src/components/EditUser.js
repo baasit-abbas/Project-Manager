@@ -7,7 +7,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { API } from "@/app/lib/AuthClient";
 
 const EditUser = (props) => {
   const [open, setopen] = useState(false);

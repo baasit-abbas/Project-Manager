@@ -13,7 +13,7 @@ export class API{
             body:JSON.stringify(data)
         })
         if (!res.ok){
-            return []
+            return {message:'Something went wrong'}
         }
         if (res){
             return res.json()

@@ -21,7 +21,7 @@ const ProjectCard = (props) => {
       `http://localhost:3000/projects/${props.project.id}`,
       data,
     );
-    res.deadline = formatDate(res.deadline);
+    console.log(res)
     const newProject = [...props.projects];
     const idx = newProject.findIndex((item) => item.id === props.project.id);
     newProject[idx] = res;
@@ -60,7 +60,7 @@ const ProjectCard = (props) => {
             description={props.project.description}
             status={props.project.status}
             priority={props.project.priority}
-            deadline={props.project.deadline}
+            deadline={deadline}
             edit={handleEdit}
           />
           <Delete delete={handleDelete} />

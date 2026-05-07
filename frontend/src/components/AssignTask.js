@@ -30,6 +30,7 @@ const AssignTask = (props) => {
       userId: Number(id),
       taskId: Number(props.id),
     });
+    console.log(data)
     if (data.message){
         toast.error('You already assigned same task to this user')
         return

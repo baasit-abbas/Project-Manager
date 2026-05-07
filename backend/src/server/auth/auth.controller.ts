@@ -14,7 +14,6 @@ export class AuthController {
     login(@Req() req:Request){
         return {'access_token':req.user}
     }
-
     @Post('register')
     register(@Body() dto:RegisterDto){
         return this.authService.register(dto)
